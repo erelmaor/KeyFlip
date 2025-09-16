@@ -1,25 +1,37 @@
 {
   "manifest_version": 3,
-  "name": "KeyFlip: Keyboard Layout Fix",
+  "name": "KeyFlip: Layout Fix (Hebrew ↔ English)",
   "version": "1.0",
   "description": "Fix text typed in the wrong keyboard layout (Hebrew ↔ English).",
-  "permissions": ["scripting", "activeTab", "commands"],
-  "host_permissions": ["<all_urls>"],
+  "permissions": ["scripting", "activeTab", "clipboardRead", "clipboardWrite"],
   "background": {
     "service_worker": "src/background.js"
   },
   "commands": {
     "fix-layout": {
-      "suggested_key": { "default": "Ctrl+Shift+L" },
+      "suggested_key": {
+        "default": "Ctrl+Shift+L"
+      },
       "description": "Convert selected text Hebrew ↔ English"
     }
   },
-  "action": { "default_title": "KeyFlip" },
+  "action": {
+    "default_title": "KeyFlip",
+    "default_icon": {
+      "16": "assets/icon.png",
+      "48": "assets/icon.png",
+      "128": "assets/icon.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["src/mapping.js", "src/content.js"],
-      "run_at": "document_idle"
+      "js": ["src/mapping.js", "src/content.js"]
     }
   ]
 }
