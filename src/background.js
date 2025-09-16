@@ -1,6 +1,3 @@
-// background.js
-console.log("KeyFlip background service worker started");
-
 chrome.commands.onCommand.addListener((command) => {
   console.log("Command received:", command);
   if (command !== "fix-layout") return;
